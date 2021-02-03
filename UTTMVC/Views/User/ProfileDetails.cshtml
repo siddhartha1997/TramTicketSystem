@@ -1,0 +1,81 @@
+﻿@model UTTMVC.Models.UserDetails
+
+@{
+    ViewData["Title"] = "ProfileDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    h1 {
+        background-color: #ffc324;
+        background-size: auto;
+        height: auto;
+        background-repeat: no-repeat;
+        padding-bottom: 10px;
+        text-decoration: double;
+        font-style: italic;
+        text-shadow: initial;
+        color: antiquewhite;
+        text-align:center
+    }
+    #PageBody
+    {
+        padding:5%;
+    }
+    dd,dt
+    {
+        padding-bottom:2%;
+        padding-top:2%;
+    }
+    #PageFooter {
+        text-align: center;
+        padding: 2%;
+        font-weight: bold;
+        color: #ffc324;
+    }
+    body
+    {
+        background-color:azure;
+    }
+</style>
+<h1>Personal Details</h1>
+
+<div id="PageBody">
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+    </dl>
+</div>
+<div id="PageFooter">
+    @Html.ActionLink("Edit", "Edit") |
+    @Html.ActionLink("Delete", "Delete") |
+    @Html.ActionLink("HomePage", "Index", "Booking")
+    <!--<a asp-action="Index" asp-controller="Booking">Back to HomePage</a>-->
+</div>

@@ -1,0 +1,92 @@
+﻿@model UTTMVC.Models.TicketDetails
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="~/css/Booking_Index.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<link href="~/lib/jqueryui/themes/base/jquery-ui.css" rel="stylesheet" />
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        var dateToday = new Date();
+        $(function () {
+            $(".mydatepicker").datepicker({
+                numberOfMonths: 1,
+                showButtonPanel: true,
+                minDate: dateToday,
+                maxDate: dateToday
+            });
+            $("#fare").click(function () {
+                if (document.getElementById("PassengerCount").value == "")
+                    alert("Give no. of passenger Input");
+                if (document.getElementById("AC").checked)
+                    fare.value = 20 * document.getElementById("PassengerCount").value;
+                else
+                    fare.value = 7 * document.getElementById("PassengerCount").value;
+            });
+        });
+        //$(document).ready(function () {
+        //});
+    </script>
+}
+<div id="PageHead">
+    <ul id="MenuBar">
+        <li><a href="@Url.Action("GetAccountDetails","User")">View Profile</a></li>
+        <li><a href="@Url.Action("GetTicketDetails")">View Ticket Details</a></li>
+        <li><a href="@Url.Action("Delete")">Cancel Ticket</a></li>
+        <li id="RightOrient"><a href="@Url.Action("Index","Home")"><span class="glyphicon glyphicon-log-out">Logout</span></a></li>
+    </ul>
+</div>
+<div id="PageBody">
+    <h3>Book Your Ticket</h3>
+    <div class="row">
+        <div class="col-md-4" id="FormBody">
+            <form asp-action="BookTicket" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Route" class="control-label"></label>
+                    <select asp-for="Route" class="form-control" required>
+                        <option value="ShyamBazar-Esplanade">ShyamBazar-Esplanade</option>
+                        <option value="Gariahat-Esplanade">Gariahat-Esplanade</option>
+                        <option value="Tollygunje-Ballygunje">Tollygunje-Ballygunje</option>
+                    </select>
+                    <span asp-validation-for="Route" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TramType" class="control-label"></label>
+                    <input type="radio" asp-for="TramType" value="AC" class="form-control" id="AC" name="tramtype" checked />AC
+                    <input type="radio" asp-for="TramType" value="NONAC" class="form-control" id="NONAC" name="tramtype" />Non AC
+                    <span asp-validation-for="TramType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Date" class="control-label"></label>
+                    <input type="text" asp-for="Date" class="form-control mydatepicker" required />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NumberOfPassenger" class="control-label"></label>
+                    <input asp-for="NumberOfPassenger" class="form-control" id="PassengerCount" min="1" max="6" required />
+                    <span asp-validation-for="NumberOfPassenger" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TicketFare" class="control-label"></label>
+                    <input asp-for="TicketFare" class="form-control" id="fare" readonly />
+                    <span asp-validation-for="TicketFare" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input id="btn" type="submit" value="Book Ticket" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

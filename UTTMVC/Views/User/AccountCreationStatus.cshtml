@@ -1,0 +1,57 @@
+﻿@model UTTMVC.Models.AccountCreationMessage
+
+@{
+    ViewData["Title"] = "AccountCreationStatus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    h1 {
+        background-color: #ffc324;
+        background-size: auto;
+        height: auto;
+        background-repeat: no-repeat;
+        padding-bottom: 10px;
+        text-decoration: double;
+        font-style: italic;
+        text-shadow: initial;
+        color: antiquewhite;
+        text-align:center;
+    }
+    body
+    {
+        background-color:azure;
+    }
+    #PageBody
+    {
+        padding:10%;
+    }
+    table,td
+    {
+        border:solid;
+        text-align:center;
+    }
+</style>
+<h1>Account Creation Details</h1>
+<div id="PageBody">
+    <table class="table" border="1">
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Id)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.CreationStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CreationStatus)
+            </td>
+        </tr>
+    </table>
+</div>
+<br />
+<br />
+<h5>Please relogin with the generated id and the password given by you.<a href="@Url.Action("Login","User")">SignIn Here</a></h5>

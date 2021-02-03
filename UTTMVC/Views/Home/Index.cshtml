@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    #heading {
+        background-color: #ffc324;
+        background-size:auto;
+        height : auto;
+        background-repeat:no-repeat;
+        padding-bottom:10px;
+    }
+    #headfont{
+        text-decoration:double;
+        font-style:italic;
+        text-shadow:initial;
+        color:antiquewhite;
+    }
+    #bodytext{
+        padding:5%;
+        background-color:azure;
+    }
+    h2{
+        padding-bottom:10%;
+    }
+    input{
+        padding-bottom:10%;
+    }
+    #btn {
+        background-color: #ffc324;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius:20px;
+    }
+    #clock {
+        font-size: 15px;
+        width: 90px;
+        font-style:oblique;
+        float:right;
+        font-family:'Times New Roman', Times, serif;
+        font-weight:900;
+    } 
+</style>
+<script>
+    setInterval(showTime, 1000);
+    function showTime() {
+        let time = new Date();
+        let hour = time.getHours();
+        let min = time.getMinutes();
+        let sec = time.getSeconds();
+        am_pm = "AM";
+
+        if (hour > 12) {
+            hour -= 12;
+            am_pm = "PM";
+        }
+        if (hour == 0) {
+            hr = 12;
+            am_pm = "AM";
+        }
+
+        hour = hour < 10 ? "0" + hour : hour;
+        min = min < 10 ? "0" + min : min;
+        sec = sec < 10 ? "0" + sec : sec;
+
+        let currentTime = hour + ":"
+            + min + ":" + sec + am_pm;
+
+        document.getElementById("clock")
+            .innerHTML = currentTime;
+    }
+    showTime(); 
+</script>
+    <div class="text-center" id="heading">
+        <h1 class="display-4" id="headfont"><b>Unreserved Tram Ticketing System</b></h1>
+    </div>
+    <div id="clock"></div>
+    <div class="text-center" id="bodytext">
+        <h2>Welcome to Online Tram Ticket Booking Portal</h2>
+        <input type='button' id="btn" value='Signin' onclick='window.location = "@Url.Action("Login", "User")";' />
+        <br />
+        <br />
+        <input type='button' id="btn" value='Signoff' onclick='window.location = "@Url.Action("LogOff","User")";' />
+    </div>

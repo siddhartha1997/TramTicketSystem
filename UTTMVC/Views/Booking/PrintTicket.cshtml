@@ -1,0 +1,126 @@
+﻿@model UTTMVC.Models.TicketDetails
+
+@{
+    ViewData["Title"] = "PrintTicket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    h1 {
+        background-color: #ffc324;
+        background-size: auto;
+        height: auto;
+        background-repeat: no-repeat;
+        padding-bottom: 10px;
+        color: antiquewhite;
+        text-align: center;
+    }
+    #PageBody{
+        background-color:azure;
+        padding:5%;
+    }
+    table,td,tr
+    {
+        border:solid;
+    }
+    a
+    {
+        text-decoration:none;
+        color:black ;
+    }
+    a:hover {
+        text-decoration: none;
+        color: black;
+    }
+    #PageFooter {
+        text-align: center;
+        color: black;
+    }
+    .pointer {
+        cursor: pointer;
+        color:black;
+    }
+    body {
+        color: #ffc324;
+    }
+</style>
+<h1>Ticket</h1>
+<div id="PageBody">
+    <table class="table">
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Id)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Route)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Route)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.TramType)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.TramType)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Date)
+            </td>
+        </tr>
+        <tr>
+            <td>Purchase Time</td>
+            <td id="TimePrint"></td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.NumberOfPassenger)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.NumberOfPassenger)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.TicketFare)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.TicketFare)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center">
+                Journey within 24 hrs from the day of purchase
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+        var myDate = new Date();
+        var myDay = myDate.getDay();
+
+
+        // get hour value.
+        var hours = myDate.getHours();
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        var minutes = myDate.getMinutes();
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        var myTime = hours + " : " + minutes + ampm;
+        document.getElementById("TimePrint").innerHTML = myTime;
+    </script>
+</div>
+<div id="PageFooter">
+    <a href="@Url.Action("Index")">Book Another Ticket</a> |
+    <span  class="pointer" onclick="window.print()">Print Ticket</span>
+</div>

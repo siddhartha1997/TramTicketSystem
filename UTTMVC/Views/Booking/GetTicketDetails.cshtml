@@ -1,0 +1,71 @@
+﻿@model UTTMVC.Models.TicketId
+
+@{
+    ViewData["Title"] = "GetTicketDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    h1 {
+        background-color: #ffc324;
+        background-size: auto;
+        height: auto;
+        background-repeat: no-repeat;
+        padding-bottom: 10px;
+        color: antiquewhite;
+        text-align: center;
+    }
+
+    #PageBody {
+        padding: 5%;
+        font-weight:bold;
+    }
+    #PageFooter{
+        text-align:center;
+    }
+    body{
+        background-color:azure;
+    }
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    a:hover {
+        text-decoration: none;
+        color: black;
+    }
+    #btn {
+        background-color: #ffc324;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 20px;
+    }
+</style>
+<h1>Get Ticket Details</h1>
+
+<div class="row" id="PageBody">
+    <div class="col-md-4">
+        <form asp-action="GetTicketInformation" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label">Ticket ID/PNR</label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input id="btn" type="submit" value="View" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="PageFooter">
+    <a asp-action="Index">Back to Home Page</a>
+</div>
+

@@ -1,0 +1,84 @@
+﻿body {
+    background-color: azure;
+}
+#MenuBar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ffc324;
+}
+
+#RightOrient {
+    float: right;
+}
+
+li {
+    float: left;
+}
+
+    li a {
+        display: block;
+        color: antiquewhite;
+        text-align: center;
+        padding: 14px 100px;
+        text-decoration: none;
+    }
+
+        li a:hover:not(.active) {
+            background-color: antiquewhite;
+            text-decoration: none;
+            font-weight: bold;
+            color: #ffc324;
+        }
+
+
+
+#PageHead {
+    background-color: #ffc324;
+    background-size: auto;
+    height: auto;
+    background-repeat: no-repeat;
+    padding-bottom: 10px;
+    text-decoration: double;
+    font-style: italic;
+    text-shadow: initial;
+    color: antiquewhite;
+    text-align: center
+}
+
+h3 {
+    color: antiquewhite;
+    font-weight: bold;
+    background-color: #ffc324;
+    border-radius: 10px;
+}
+
+#PageBody {
+    background-color: yellowgreen;
+    padding: 10px;
+    margin: 10%;
+    border: solid;
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+    text-align: center;
+}
+
+#FormBody {
+    text-align: center;
+}
+
+#btn {
+    background-color: #ffc324;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 20px;
+}
